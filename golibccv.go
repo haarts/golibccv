@@ -15,6 +15,36 @@ type Image struct {
 	image *C.ccv_dense_matrix_t
 }
 
+type SwtParams {
+	interval int
+	minNeighbors int
+	scaleInvariant int
+	direction int
+	sameWordThreshold float64
+	/* canny parameters */
+	size int
+	lowThreshold int
+	highThreshold int
+	/* geometry filtering parameters */
+	maxHeight int
+	minHeight int
+	minArea int
+	letterOccludeThreshold int
+	aspectRatio float64
+	stdRatio float64
+	thicknessRatio float64
+	/* grouping parameters */
+	heightRatio float64
+	intensityThreshold int
+	distanceRatio float64
+	intersectRatio float64
+	elongateRatio float64
+	letterThreshold int
+	/* break textline into words */
+	breakdown int
+	breakdownRatio float64
+}
+
 type ImageDiskType int
 type ImageStreamType int
 type ImageRawType int
@@ -42,4 +72,11 @@ func WriteImage(dst string, image Image, imageType ImageDiskType) error {
 	conf := C.int(0) // currently unused
 	C.ccv_write(image.image, cdst, &lenght, C.int(imageType), unsafe.Pointer(&conf))
 	return nil
+}
+
+func Swt(src Image, output Image, outputType int, params SwtParams) {
+	
+}
+
+func SwtDetectWords(image Image, params SwtParams) {
 }
