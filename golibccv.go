@@ -15,17 +15,13 @@ type Image struct {
 	image *C.ccv_dense_matrix_t
 }
 
-type SwtParams {
-	interval int
-	minNeighbors int
-	scaleInvariant int
-	direction int
-	sameWordThreshold float64
-	/* canny parameters */
+type cannyParams {
 	size int
 	lowThreshold int
 	highThreshold int
-	/* geometry filtering parameters */
+}
+
+type geometryFilteringParams {
 	maxHeight int
 	minHeight int
 	minArea int
@@ -33,13 +29,29 @@ type SwtParams {
 	aspectRatio float64
 	stdRatio float64
 	thicknessRatio float64
-	/* grouping parameters */
+}
+
+type groupingParams {
 	heightRatio float64
 	intensityThreshold int
 	distanceRatio float64
 	intersectRatio float64
 	elongateRatio float64
 	letterThreshold int
+}
+
+type SwtParams {
+	interval int
+	minNeighbors int
+	scaleInvariant int
+	direction int
+	sameWordThreshold float64
+	/* canny parameters */
+	cannyParams
+	/* geometry filtering parameters */
+	geometryFilteringParams
+	/* grouping parameters */
+	groupingParams
 	/* break textline into words */
 	breakdown int
 	breakdownRatio float64
@@ -68,8 +80,8 @@ func ReadImage(src string, imageType ImageDiskType) (*Image, error) {
 func WriteImage(dst string, image Image, imageType ImageDiskType) error {
 	cdst := C.CString(dst)
 	defer C.free(unsafe.Pointer(cdst))
-	lenght := C.int(0) // currently unused
-	conf := C.int(0) // currently unused
+	lenght := C.int(0) // currently can't be set
+	conf := C.int(0) // currently can't be set
 	C.ccv_write(image.image, cdst, &lenght, C.int(imageType), unsafe.Pointer(&conf))
 	return nil
 }
