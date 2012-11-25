@@ -15,7 +15,7 @@ type Image struct {
 	image *C.ccv_dense_matrix_t
 }
 
-type cannyParams {
+type cannyParams struct {
 	size int
 	lowThreshold int
 	highThreshold int
