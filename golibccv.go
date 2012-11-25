@@ -21,7 +21,7 @@ type cannyParams {
 	highThreshold int
 }
 
-type geometryFilteringParams {
+type geometryFilteringParams struct {
 	maxHeight int
 	minHeight int
 	minArea int
@@ -31,7 +31,7 @@ type geometryFilteringParams {
 	thicknessRatio float64
 }
 
-type groupingParams {
+type groupingParams struct {
 	heightRatio float64
 	intensityThreshold int
 	distanceRatio float64
@@ -40,7 +40,7 @@ type groupingParams {
 	letterThreshold int
 }
 
-type SwtParams {
+type SwtParams struct {
 	interval int
 	minNeighbors int
 	scaleInvariant int
