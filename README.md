@@ -15,3 +15,13 @@ And I more or less copy pasted the `libccv.a` make target and changed the comman
       $(CC) `cat .LN` -shared -o $@ $^
 
 This yields a `libccv.so` file. Awesome.
+
+## Building golibccv (Ubuntu 12.04)
+
+Install the following packages:
+- libpng12-dev
+- libjpeg-dev
+- libgsl0-dev
+- libfftw3-dev
+- liblinear-dev
+
