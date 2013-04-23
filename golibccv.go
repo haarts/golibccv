@@ -1,8 +1,8 @@
 package golibccv
 
 /*
-#cgo CFLAGS: -I /Users/harm/prj/go/ccv/lib
-#cgo LDFLAGS: -lm -ljpeg -lpng -lz -L/usr/X11/lib -lgsl -lfftw3f -lfftw3 -llinear -lblas -L /Users/harm/prj/go/ccv/lib -lccv
+#cgo CFLAGS: -I /home/harm/prj/ccv/lib
+#cgo LDFLAGS: -lm -ljpeg -lpng -lz -L/usr/X11/lib -lgsl -lfftw3f -lfftw3 -llinear -lblas -L /home/harm/prj/ccv/lib -lccv
 #include <ccv.h>
 */
 import "C"
